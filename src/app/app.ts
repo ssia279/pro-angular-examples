@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app',
   templateUrl: './app.html',
   standalone: false,
   styleUrl: './app.css'
 })
 export class App {
-  protected title = 'SportsStore';
 }

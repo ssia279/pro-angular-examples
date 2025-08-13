@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="bg-dark text-white p-2">
+      <span class="navbar-brand m-lg-2">
+        SPORTS STORE
+        <cart-summary></cart-summary>
+      </span>
+    </div>
+  </div>
+
+  <div class="row text-white">
+    <div class="col-3 p-2">
+      <div class="d-grid gap-2">
+        <button class="btn btn-outline-primary" (click)="changeCategory()">
+          Home
+        </button>
+        @for (cat of categories(); track cat) {
+          <button class="btn btn-outline-primary" [class.active]="cat == selectedCategory()"
+            (click)="changeCategory(cat)">
+            {{ cat }}
+          </button>
+        }
+      </div>
+    </div>
+    <div class="col-9 p-2 text-dark">
+      @for (product of pagedProducts(); track product.id) {
+        <div class="card m-1 p-1 bg-light">
+          <h4>
+            {{product.name}}
+            <span class="badge rounded-pill bg-primary" style="float: right;">
+              {{ product.price | currency:"USD":"symbol":"2.2-2" }}
+            </span>
+          </h4>
+          <div class="card-text bg-white p-1-">
+            {{ product.description }}
+            <button class="btn btn-success btn-sm float-end" (click)="addProductToCart(product)">
+              Add To Cart
+            </button>
+          </div>
+        </div>
+      }
+      <div class="d-flex flex-row align-items-center flex-wrap float-start me-1">
+        <select class="form-control" [value]="productsPerPage()"
+          (change)="changePageSize($any($event).target.value)">
+          <option value="3">3 per page</option>
+          <option value="4">4 per page</option>
+          <option value="6">6 per page</option>
+          <option value="8">8 per page</option>
+        </select>
+      </div>
+      <div class="btn-group float-end">
+
+          <button *counter="let page of pageCount()" (click)="changePage(page)" class="btn btn-outline-primary"
+                  [class.active]="page == selectedPage()">
+            {{ page }}
+          </button>
+      </div>
+
+    </div>
+  </div>
+</div>
