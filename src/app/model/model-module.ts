@@ -4,8 +4,12 @@ import {StaticDataSource} from './static.datasource';
 import {Cart} from './cart';
 import {Order} from './order';
 import {OrderRepository} from './order-repository';
+import {RestDataSource} from './rest-data-source';
+import {AuthService} from './auth-service';
 
 @NgModule({
-  providers: [ProductRepository, StaticDataSource, Cart, Order, OrderRepository]
+  imports: [],
+  providers: [ProductRepository, StaticDataSource, Cart, Order, OrderRepository,
+    RestDataSource, AuthService]
 })
 export class ModelModule {}
