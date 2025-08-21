@@ -1,3 +1,39 @@
-<h3 style="padding-top: 10px">
-  Product editor placeholder
-</h3>
+<h3 class="heading">{{editing ? "Edit" : "Create"}}</h3>
+
+<form (ngSubmit)="save()">
+
+  @if(editing) {
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput name="id" [(ngModel)]="product.id" disabled />
+    </mat-form-field>
+  }
+
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput name="name" [(ngModel)]="product.name" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Category</mat-label>
+    <input matInput name="category" [(ngModel)]="product.category" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput name="description" [(ngModel)]="product.description" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input matInput name="price" [(ngModel)]="product.price" />
+  </mat-form-field>
+
+  <button type="submit" mat-flat-button>
+    {{editing ? "Save" : "Create"}}
+  </button>
+  <button type="reset" mat-stroked-button routerLink="/admin/main/products">
+    Cancel
+  </button>
+
+</form>

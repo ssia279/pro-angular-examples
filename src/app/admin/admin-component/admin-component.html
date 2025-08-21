@@ -1,6 +1,6 @@
-<mat-toolbar color="primary">
+<mat-toolbar style="background: #0d6efd; color: white;">
   @if(sidenav.mode === 'over') {
-    <button mat-icon-button (click)="sidenav.toggle()" >
+    <button mat-icon-button (click)="sidenav.toggle()" style="color: white;">
       @if(!sidenav.opened) {<mat-icon>menu</mat-icon>}
       @if(sidenav.opened){<mat-icon>close</mat-icon>}
     </button>
@@ -10,7 +10,7 @@
   <span></span>
 </mat-toolbar>
 
-<mat-sidenav-container>
+<mat-sidenav-container >
   <mat-sidenav #sidenav="matSidenav" class="mat-elevation-z8">
     <button mat-button class="menu-button" routerLink="/admin/main/products"
       routerLinkActive="mat-accent" (click)="sidenav.close()">
